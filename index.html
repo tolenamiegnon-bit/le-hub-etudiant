@@ -1,0 +1,629 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Le Hub Étudiant, la plateforme numérique du BSFE de l'ENSGEP.">
+    <title>Le Hub Étudiant | ENSGEP</title>
+
+    <style>
+        :root {
+            --bleu: #062746;
+            --bleu-clair: #eaf5ff;
+            --vert: #08a65a;
+            --blanc: #ffffff;
+            --texte: #193451;
+            --gris: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--texte);
+            background: var(--blanc);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        header {
+            background: var(--bleu);
+            color: white;
+            padding: 15px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            color: #22d477;
+        }
+
+        .logo small {
+            display: block;
+            color: #b9d2e8;
+            font-size: 11px;
+            font-weight: normal;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #45e58d;
+        }
+
+        .bouton {
+            display: inline-block;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 22px;
+            font-weight: bold;
+            text-align: center;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .bouton:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .bouton-vert {
+            background: var(--vert);
+            color: white;
+        }
+
+        .bouton-bleu {
+            background: #063c8b;
+            color: white;
+        }
+
+        .bouton-blanc {
+            background: white;
+            color: var(--bleu);
+            border: 1px solid #b8d2ec;
+        }
+
+        .accueil {
+            padding: 75px 6%;
+            min-height: 490px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            background:
+                radial-gradient(circle at 85% 20%, #c6f4dc 0, transparent 30%),
+                linear-gradient(120deg, #eef8ff, #ffffff 60%, #e5f9ed);
+        }
+
+        .accueil-texte {
+            max-width: 590px;
+        }
+
+        .surtitre {
+            color: var(--vert);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            color: var(--bleu);
+            font-size: clamp(36px, 5vw, 58px);
+            line-height: 1.12;
+            margin: 15px 0 20px;
+        }
+
+        h1 span {
+            color: var(--vert);
+        }
+
+        .accueil-texte p {
+            font-size: 17px;
+            color: #435a72;
+            margin-bottom: 25px;
+        }
+
+        .boutons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .illustration {
+            width: 390px;
+            max-width: 100%;
+            min-height: 300px;
+            border-radius: 35px;
+            background: linear-gradient(145deg, #d6f1ff, #bcebd4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 18px 45px #06274612;
+        }
+
+        .illustration .dessin {
+            font-size: 92px;
+            line-height: 1.4;
+        }
+
+        .illustration h2 {
+            color: var(--bleu);
+            font-size: 24px;
+        }
+
+        .illustration p {
+            font-size: 14px;
+            color: #47657b;
+            margin-top: 8px;
+        }
+
+        .bulle {
+            position: absolute;
+            background: white;
+            color: var(--bleu);
+            padding: 9px 14px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #06274615;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .bulle-une {
+            top: 20px;
+            right: -12px;
+        }
+
+        .bulle-deux {
+            bottom: 25px;
+            left: -15px;
+        }
+
+        section {
+            padding: 65px 6%;
+        }
+
+        .titre-section {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .titre-section h2 {
+            color: var(--bleu);
+            font-size: clamp(26px, 3vw, 36px);
+            margin: 8px 0;
+        }
+
+        .titre-section p {
+            color: var(--gris);
+        }
+
+        .services {
+            background: white;
+        }
+
+        .grille-services {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .carte-service {
+            padding: 25px 15px;
+            text-align: center;
+            border: 1px solid #e7eef5;
+            border-radius: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .carte-service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px #06274610;
+        }
+
+        .icone {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 14px;
+            border-radius: 17px;
+            display: grid;
+            place-items: center;
+            font-size: 28px;
+            background: #e4f2ff;
+        }
+
+        .carte-service h3 {
+            color: var(--bleu);
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .carte-service p {
+            color: var(--gris);
+            font-size: 13px;
+        }
+
+        .ecole {
+            background: var(--bleu-clair);
+        }
+
+        .grille-filieres {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .carte-filiere {
+            background: white;
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 8px 24px #06274608;
+        }
+
+        .carte-filiere .emoji {
+            font-size: 43px;
+            margin-bottom: 12px;
+        }
+
+        .carte-filiere h3 {
+            color: var(--bleu);
+            margin-bottom: 10px;
+        }
+
+        .carte-filiere p {
+            color: var(--gris);
+            font-size: 14px;
+        }
+
+        .communaute {
+            padding: 55px 6%;
+            text-align: center;
+            background: white;
+        }
+
+        .communaute h2 {
+            color: var(--bleu);
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .communaute p {
+            color: var(--gris);
+            max-width: 650px;
+            margin: 0 auto 24px;
+        }
+
+        footer {
+            background: var(--bleu);
+            color: white;
+            padding: 35px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        footer p {
+            color: #c1d4e6;
+            font-size: 13px;
+        }
+
+        .admin-discret {
+            display: block;
+            margin-top: 18px;
+            font-size: 12px;
+            color: #9bb5cc;
+        }
+
+        .admin-discret:hover {
+            color: white;
+        }
+
+        @media (max-width: 900px) {
+            .accueil {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 55px;
+            }
+
+            .boutons {
+                justify-content: center;
+            }
+
+            .illustration {
+                width: 450px;
+            }
+
+            .grille-services {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grille-filieres {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .accueil {
+                padding: 45px 5%;
+            }
+
+            .illustration {
+                min-height: 260px;
+            }
+
+            .bulle-une {
+                right: 0;
+            }
+
+            .bulle-deux {
+                left: 0;
+            }
+
+            .grille-services {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .carte-service {
+                padding: 18px 8px;
+            }
+
+            section {
+                padding: 45px 5%;
+            }
+
+            footer {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="#accueil">
+            🎓 Le Hub <span>Étudiant</span>
+            <small>ENSGEP · BSFE</small>
+        </a>
+
+        <nav aria-label="Navigation principale">
+            <a href="#accueil">Accueil</a>
+            <a href="#ecole">L'ENSGEP</a>
+            <a href="#filieres">Filières</a>
+            <a href="#services">Services</a>
+            <a href="#communaute">Contact</a>
+        </nav>
+
+        <a class="bouton bouton-vert" href="#connexion">Espace étudiant ↗</a>
+    </header>
+
+    <main>
+        <section class="accueil" id="accueil">
+            <div class="accueil-texte">
+                <div class="surtitre">Bienvenue dans ta communauté</div>
+
+                <h1>
+                    Une seule plateforme,<br>
+                    <span>tous tes services !</span>
+                </h1>
+
+                <p>
+                    Le Hub Étudiant est la plateforme numérique du BSFE de l'ENSGEP.
+                    Retrouve au même endroit les informations, les ressources et les
+                    services essentiels à ta vie universitaire.
+                </p>
+
+                <div class="boutons" id="connexion">
+                    <a class="bouton bouton-vert" href="#inscription">
+                        🎓 Accès étudiant
+                    </a>
+
+                    <a class="bouton bouton-blanc" href="#administration">
+                        🔐 Accès administration
+                    </a>
+                </div>
+            </div>
+
+            <div class="illustration">
+                <div class="bulle bulle-une">💬 Ensemble, on avance !</div>
+                <div class="dessin" aria-hidden="true">👩🏽‍🎓 📚 👨🏽‍🎓</div>
+                <h2>Bienvenue à l'ENSGEP !</h2>
+                <p>Apprendre, partager et construire l'avenir ensemble.</p>
+                <div class="bulle bulle-deux">✨ Ton avenir commence ici</div>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="titre-section">
+                <div class="surtitre">Tout au même endroit</div>
+                <h2>Les services étudiants</h2>
+                <p>Les outils essentiels pour faciliter ton parcours universitaire.</p>
+            </div>
+
+            <div class="grille-services">
+                <article class="carte-service">
+                    <div class="icone">📅</div>
+                    <h3>Emploi du temps</h3>
+                    <p>Consulte les horaires des cours et les modifications.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">📚</div>
+                    <h3>Ressources pédagogiques</h3>
+                    <p>Retrouve les documents et les anciennes épreuves.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">📊</div>
+                    <h3>Résultats et notes</h3>
+                    <p>Consulte tes résultats en toute confidentialité.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">💳</div>
+                    <h3>Paiements et reçus</h3>
+                    <p>Retrouve les informations relatives aux cotisations.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">🎉</div>
+                    <h3>Événements</h3>
+                    <p>Découvre les activités et les événements du BSFE.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">🔔</div>
+                    <h3>Notifications</h3>
+                    <p>Reste informé des nouvelles importantes.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">💡</div>
+                    <h3>Suggestions</h3>
+                    <p>Partage tes idées pour améliorer la vie étudiante.</p>
+                </article>
+
+                <article class="carte-service">
+                    <div class="icone">🤝</div>
+                    <h3>Vie étudiante</h3>
+                    <p>Participe à une communauté dynamique et solidaire.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="ecole" id="ecole">
+            <div class="titre-section">
+                <div class="surtitre">À propos de l'école</div>
+                <h2>Des compétences pour demain</h2>
+                <p>Découvre les domaines de formation présentés sur cette plateforme.</p>
+            </div>
+
+            <div class="grille-filieres" id="filieres">
+                <article class="carte-filiere">
+                    <div class="emoji">❄️</div>
+                    <h3>Froid et climatisation</h3>
+                    <p>
+                        Découvrir les technologies du froid, de la climatisation
+                        et du confort thermique.
+                    </p>
+                </article>
+
+                <article class="carte-filiere">
+                    <div class="emoji">⚙️</div>
+                    <h3>Équipements motorisés</h3>
+                    <p>
+                        Explorer les systèmes motorisés, la mécanique
+                        et la maintenance des équipements.
+                    </p>
+                </article>
+
+                <article class="carte-filiere">
+                    <div class="emoji">⚡</div>
+                    <h3>Génie énergétique et procédés</h3>
+                    <p>
+                        S'intéresser aux systèmes énergétiques et aux procédés
+                        industriels.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="communaute" id="communaute">
+            <div class="surtitre">La communauté ENSGEP</div>
+            <h2>Fais partie de l'aventure !</h2>
+            <p>
+                Prépare-toi à retrouver progressivement les services du BSFE,
+                les informations utiles et les ressources de ta communauté
+                étudiante dans un seul espace.
+            </p>
+
+            <div class="boutons">
+                <a class="bouton bouton-vert" href="#inscription">
+                    Créer un compte étudiant
+                </a>
+                <a class="bouton bouton-bleu" href="mailto:contact@exemple.com">
+                    Nous contacter
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">
+            🎓 Le Hub <span>Étudiant</span>
+            <small>ENSGEP · BSFE</small>
+        </div>
+
+        <p>Une communauté, un avenir, des possibilités.</p>
+
+        <div>
+            <p>© 2026 — Le Hub Étudiant</p>
+            <a class="admin-discret" href="#administration">
+                Accès réservé à l'administration
+            </a>
+        </div>
+    </footer>
+
+    <!-- Les espaces de connexion seront ajoutés dans une prochaine étape. -->
+
+    <div id="inscription" hidden></div>
+    <div id="administration" hidden></div>
+
+</body>
+</html>
+```
