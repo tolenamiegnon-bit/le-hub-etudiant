@@ -1,21 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Le Hub Étudiant, la plateforme de la communauté étudiante de l'ENSGEP.">
-<title>Le Hub Étudiant | ENSGEP</title>
+<title>Le Hub Étudiant | ENSGEP - UNSTIM</title>
 
 <style>
 :root {
-    --navy: #082849;
-    --green: #079455;
-    --mint: #e6f7ed;
-    --blue: #eaf4ff;
-    --text: #243b53;
-    --muted: #718096;
+    --navy: #102b50;
+    --green: #07865b;
     --white: #ffffff;
+    --light: #f3f7fa;
+    --text: #26364a;
 }
 
 * {
@@ -24,417 +20,231 @@
     box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     color: var(--text);
-    background: white;
+    background: var(--white);
     line-height: 1.6;
 }
-
-a { text-decoration: none; color: inherit; }
-
-button, a { -webkit-tap-highlight-color: transparent; }
 
 header {
     background: var(--navy);
     color: white;
-    min-height: 82px;
-    padding: 15px 7%;
+    padding: 16px 7%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    align-items: center;
     flex-wrap: wrap;
 }
 
 .logo {
     font-size: 23px;
-    font-weight: 800;
-    letter-spacing: -0.7px;
-    line-height: 1.2;
+    font-weight: bold;
 }
 
-.logo span { color: #39dc91; }
-
-.logo small {
-    display: block;
-    color: #bdd2e5;
-    font-size: 10px;
-    letter-spacing: 2px;
-    margin-top: 5px;
+.logo span {
+    color: #27d69a;
 }
 
 nav {
     display: flex;
-    align-items: center;
-    gap: 23px;
+    gap: 22px;
     flex-wrap: wrap;
 }
 
 nav a {
-    font-size: 13px;
-    color: #e2edf7;
-}
-
-nav a:hover { color: #53e7a0; }
-
-.btn {
-    display: inline-block;
-    border-radius: 9px;
-    padding: 13px 20px;
-    font-weight: bold;
+    color: white;
+    text-decoration: none;
     font-size: 14px;
-    border: 0;
-    transition: transform .2s, box-shadow .2s;
 }
 
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px #08284918;
+nav a:hover {
+    color: #27d69a;
 }
 
-.btn-green { background: var(--green); color: white; }
-.btn-white { background: white; color: var(--navy); }
-.btn-outline { border: 1px solid #b9cfe2; color: var(--navy); }
+/* DIAPORAMA */
 
-.hero {
-    padding: 75px 7%;
-    background:
-        radial-gradient(circle at 85% 20%, #bdeed5 0, transparent 29%),
-        linear-gradient(115deg, #f0f7ff 0%, #fff 55%, #e5f8ed 100%);
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    align-items: center;
-    gap: 55px;
-    overflow: hidden;
-}
-
-.eyebrow {
-    color: var(--green);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.hero h1 {
-    color: var(--navy);
-    font-size: clamp(38px, 5vw, 61px);
-    line-height: 1.1;
-    letter-spacing: -2px;
-    margin: 19px 0;
-}
-
-.hero h1 span { color: var(--green); }
-
-.hero-copy {
-    max-width: 550px;
-    color: #50657a;
-    font-size: 16px;
-    margin-bottom: 27px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 13px;
-    flex-wrap: wrap;
-}
-
-.hero-note {
-    margin-top: 24px;
-    color: #657a8d;
-    font-size: 12px;
-}
-
-.hero-art {
-    min-height: 365px;
+.slider {
+    height: 440px;
     position: relative;
-    border-radius: 30px;
-    background: linear-gradient(145deg, #cce9ff, #c4f0d8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
     overflow: hidden;
+    background: var(--navy);
 }
 
-.sun {
+.slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 7%;
+}
+
+.slide::before {
+    content: "";
     position: absolute;
-    top: 30px;
-    right: 42px;
-    width: 65px;
-    height: 65px;
-    background: #ffdf7e;
+    inset: 0;
+    background: linear-gradient(90deg,
+        rgba(9, 31, 59, 0.9),
+        rgba(9, 31, 59, 0.25));
+}
+
+.slide-content {
+    position: relative;
+    color: white;
+    max-width: 600px;
+}
+
+.slide-content h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.slide-content p {
+    font-size: 17px;
+    margin-bottom: 22px;
+}
+
+.button {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    text-decoration: none;
+    padding: 12px 23px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background: #056b49;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.8);
+    border: none;
+    padding: 12px;
+    font-size: 22px;
+    cursor: pointer;
     border-radius: 50%;
 }
 
-.cloud {
-    position: absolute;
-    top: 60px;
-    left: 28px;
-    font-size: 38px;
+.prev { left: 18px; }
+.next { right: 18px; }
+
+/* SECTIONS */
+
+section {
+    padding: 65px 8%;
 }
 
-.campus {
-    position: relative;
-    z-index: 1;
-    width: 88%;
-    padding: 28px 15px;
+.section-title {
     text-align: center;
-    background: #ffffffd9;
-    border: 1px solid #ffffff;
-    border-radius: 23px;
-    box-shadow: 0 20px 45px #08284915;
-}
-
-.campus-icon {
-    font-size: 74px;
-    line-height: 1.3;
-}
-
-.campus h2 {
     color: var(--navy);
-    font-size: 23px;
-    margin-top: 8px;
+    font-size: 29px;
+    margin-bottom: 12px;
 }
 
-.campus p {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-.chat-bubble {
-    position: absolute;
-    z-index: 2;
-    padding: 11px 15px;
-    background: white;
-    color: var(--navy);
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 13px;
-    box-shadow: 0 7px 25px #08284915;
-}
-
-.bubble-top { top: 22px; left: 18%; }
-.bubble-bottom { bottom: 23px; right: 5%; }
-
-.stats {
-    padding: 25px 7%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    background: white;
-    border-bottom: 1px solid #edf1f5;
-}
-
-.stat {
+.section-intro {
     text-align: center;
-    padding: 8px;
+    max-width: 700px;
+    margin: 0 auto 35px;
 }
 
-.stat strong {
-    display: block;
-    color: var(--navy);
-    font-size: 19px;
-}
-
-.stat span { color: var(--muted); font-size: 12px; }
-
-section.content-section { padding: 75px 7%; }
-
-.section-heading {
-    max-width: 680px;
-    margin: 0 auto 38px;
+.about {
+    background: var(--light);
     text-align: center;
 }
 
-.section-heading h2 {
-    color: var(--navy);
-    font-size: clamp(27px, 3vw, 37px);
-    line-height: 1.2;
-    margin: 11px 0;
-}
-
-.section-heading p {
-    color: var(--muted);
-    font-size: 14px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-}
-
-.service-card {
-    padding: 25px 19px;
-    border: 1px solid #e7edf3;
-    border-radius: 17px;
-    background: white;
-    transition: transform .2s, box-shadow .2s;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px #0828490d;
-}
-
-.service-icon {
-    width: 53px;
-    height: 53px;
-    display: grid;
-    place-items: center;
-    font-size: 26px;
-    background: var(--blue);
-    border-radius: 15px;
-    margin-bottom: 17px;
-}
-
-.service-card:nth-child(even) .service-icon { background: var(--mint); }
-
-.service-card h3 {
-    color: var(--navy);
-    font-size: 15px;
-    margin-bottom: 8px;
-}
-
-.service-card p {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.programs {
-    background: #f0f7ff;
-}
-
-.program-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.program-card {
-    border-radius: 20px;
-    overflow: hidden;
-    background: white;
-    border: 1px solid #e3ebf3;
-    transition: transform .2s;
-}
-
-.program-card:hover { transform: translateY(-4px); }
-
-.program-art {
-    min-height: 150px;
-    display: grid;
-    place-items: center;
-    font-size: 65px;
-    background: linear-gradient(135deg, #d9edff, #bce8d1);
-}
-
-.program-card:nth-child(2) .program-art {
-    background: linear-gradient(135deg, #dce9ff, #c9d8f9);
-}
-
-.program-card:nth-child(3) .program-art {
-    background: linear-gradient(135deg, #e1f5e8, #bce8d1);
-}
-
-.program-info { padding: 24px; }
-
-.program-info h3 {
-    color: var(--navy);
-    font-size: 18px;
-    margin-bottom: 9px;
-}
-
-.program-info p {
-    color: var(--muted);
-    font-size: 13px;
-}
-
-.community {
-    text-align: center;
-    background: white;
-}
-
-.community-box {
-    max-width: 900px;
+.about-content {
+    max-width: 850px;
     margin: auto;
-    padding: 50px 25px;
-    border-radius: 24px;
-    background: linear-gradient(120deg, #eaf5ff, #e4f8ec);
 }
 
-.community-box h2 {
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    padding: 27px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+    border-bottom: 4px solid var(--green);
+}
+
+.card h3 {
     color: var(--navy);
-    font-size: clamp(26px, 3vw, 36px);
-    margin: 12px 0;
+    margin-bottom: 10px;
 }
 
-.community-box p {
-    color: #5b7085;
-    font-size: 14px;
-    max-width: 600px;
-    margin: 0 auto 24px;
+.card-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.bsfe {
+    background: var(--navy);
+    color: white;
+    text-align: center;
+}
+
+.bsfe .section-title {
+    color: white;
+}
+
+.bsfe p {
+    max-width: 700px;
+    margin: 15px auto 25px;
 }
 
 footer {
-    background: var(--navy);
+    background: #091d36;
     color: white;
-    padding: 38px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
+    text-align: center;
+    padding: 25px;
+    font-size: 14px;
 }
 
-footer p { color: #b9cde0; font-size: 12px; }
+@media(max-width: 700px) {
+    header {
+        justify-content: center;
+        gap: 15px;
+    }
 
-.footer-admin {
-    display: block;
-    margin-top: 12px;
-    font-size: 11px;
-    color: #9eb6cb;
-}
+    nav {
+        justify-content: center;
+        gap: 13px;
+    }
 
-.footer-admin:hover { color: white; }
+    .slider {
+        height: 390px;
+    }
 
-@media (max-width: 1000px) {
-    header { padding: 18px 5%; }
-    nav { gap: 13px; }
-    .hero { padding: 60px 5%; gap: 30px; }
-    section.content-section { padding: 60px 5%; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-}
+    .slide-content h1 {
+        font-size: 29px;
+    }
 
-@media (max-width: 720px) {
-    header { justify-content: center; text-align: center; }
-    nav { justify-content: center; }
-    .hero { grid-template-columns: 1fr; text-align: center; }
-    .hero-buttons { justify-content: center; }
-    .hero-copy { margin-left: auto; margin-right: auto; }
-    .hero-art { min-height: 310px; }
-    .stats { padding: 20px 4%; }
-    .stat strong { font-size: 16px; }
-    .stat span { font-size: 10px; }
-    .program-grid { grid-template-columns: 1fr; }
-    footer { justify-content: center; text-align: center; }
-}
+    .slide-content p {
+        font-size: 15px;
+    }
 
-@media (max-width: 430px) {
-    nav { gap: 10px; }
-    nav a { font-size: 12px; }
-    .services-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .service-card { padding: 17px 12px; }
-    .hero-art { min-height: 280px; padding: 15px; }
-    .campus-icon { font-size: 55px; }
-    .campus h2 { font-size: 19px; }
-    .chat-bubble { font-size: 10px; }
-    .btn { padding: 12px 14px; font-size: 12px; }
+    section {
+        padding: 45px 6%;
+    }
 }
 </style>
 </head>
@@ -442,200 +252,189 @@ footer p { color: #b9cde0; font-size: 12px; }
 <body>
 
 <header>
-    <a class="logo" href="#accueil">
-        Le Hub <span>Étudiant</span>
-        <small>ENSGEP · BSFE</small>
-    </a>
+    <div class="logo">LE HUB <span>ÉTUDIANT</span></div>
 
-    <nav aria-label="Navigation principale">
+    <nav>
         <a href="#accueil">Accueil</a>
-        <a href="#ecole">Découvrir l'ENSGEP</a>
-        <a href="#services">Vie étudiante</a>
-        <a href="#actualites">Actualités</a>
+        <a href="#ecole">L'ENSGEP</a>
+        <a href="#formations">Formations</a>
+        <a href="#avenir">Métiers d'avenir</a>
+        <a href="#etudes">Poursuite des études</a>
+        <a href="bsfe.html">Le BSFE</a>
     </nav>
-
-    <a class="btn btn-green" href="#connexion">Espace étudiant ↗</a>
 </header>
 
-<main>
-    <section class="hero" id="accueil">
-        <div>
-            <div class="eyebrow">La communauté étudiante de l'ENSGEP</div>
-            <h1>Ton campus.<br>Ta communauté.<br><span>Ton avenir.</span></h1>
+<!-- DIAPORAMA -->
 
-            <p class="hero-copy">
-                Bienvenue sur Le Hub Étudiant, la plateforme du BSFE qui rassemble
-                les informations, les ressources et les services essentiels à ta
-                réussite universitaire.
-            </p>
+<div class="slider" id="accueil">
 
-            <div class="hero-buttons" id="connexion">
-                <a class="btn btn-green" href="#inscription">🎓 Espace étudiant</a>
-                <a class="btn btn-outline" href="#ecole">Découvrir l'école →</a>
+    <div class="slides" id="slides">
+
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-content">
+                <h1>Bienvenue à l'ENSGEP</h1>
+                <p>Découvrez notre établissement, son environnement et ses perspectives de formation.</p>
+                <a href="#ecole" class="button">Découvrir l'école</a>
             </div>
-
-            <p class="hero-note">✦ Apprendre ensemble · Partager nos idées · Réussir demain</p>
         </div>
 
-        <div class="hero-art" aria-label="Illustration symbolique de la vie étudiante">
-            <div class="sun"></div>
-            <div class="cloud">☁️</div>
-            <div class="chat-bubble bubble-top">💬 Ensemble, on avance !</div>
-
-            <div class="campus">
-                <div class="campus-icon">🏫 🎓 📚</div>
-                <h2>Bienvenue à l'ENSGEP</h2>
-                <p>Un espace pour apprendre, partager et réussir.</p>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-content">
+                <h1>Apprendre et construire son avenir</h1>
+                <p>La formation, la connaissance et l'innovation au service de l'avenir.</p>
+                <a href="#formations" class="button">Explorer les formations</a>
             </div>
+        </div>
 
-            <div class="chat-bubble bubble-bottom">✨ Ton avenir commence ici</div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80')">
+            <div class="slide-content">
+                <h1>Une communauté étudiante engagée</h1>
+                <p>Le BSFE, au service de la représentation et de la participation des étudiants.</p>
+                <a href="bsfe.html" class="button">Découvrir le BSFE</a>
+            </div>
         </div>
-    </section>
 
-    <div class="stats">
-        <div class="stat">
-            <strong>Une communauté</strong>
-            <span>Des étudiants qui avancent ensemble</span>
-        </div>
-        <div class="stat">
-            <strong>Un espace central</strong>
-            <span>Les informations au même endroit</span>
-        </div>
-        <div class="stat">
-            <strong>Un avenir à construire</strong>
-            <span>Des compétences et des opportunités</span>
-        </div>
     </div>
 
-    <section class="content-section" id="services">
-        <div class="section-heading">
-            <div class="eyebrow">Tout au même endroit</div>
-            <h2>Les services de ta vie étudiante</h2>
-            <p>
-                Les outils que nous préparons pour simplifier ton quotidien
-                et faciliter ton parcours à l'ENSGEP.
-            </p>
+    <button class="arrow prev" onclick="moveSlide(-1)">❮</button>
+    <button class="arrow next" onclick="moveSlide(1)">❯</button>
+</div>
+
+<!-- PRESENTATION -->
+
+<section class="about" id="ecole">
+    <div class="about-content">
+        <h2 class="section-title">Découvrir l'ENSGEP</h2>
+
+        <p>
+            L'École Nationale Supérieure de Génie Énergétique et Procédés
+            (ENSGEP) est un établissement de l'Université Nationale des
+            Sciences, Technologies, Ingénierie et Mathématiques (UNSTIM),
+            situé à Abomey, au Bénin.
+        </p>
+
+        <p>
+            Cet espace vous permet de découvrir l'établissement,
+            ses formations et les perspectives qu'elles peuvent offrir.
+        </p>
+    </div>
+</section>
+
+<!-- FORMATIONS -->
+
+<section id="formations">
+    <h2 class="section-title">Nos formations</h2>
+
+    <p class="section-intro">
+        Découvrez les domaines de formation de l'ENSGEP.
+        Les informations détaillées sur les différentes filières
+        seront progressivement ajoutées.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">📚</div>
+            <h3>Domaines de formation</h3>
+            <p>Découvrez les différents parcours proposés par l'établissement.</p>
         </div>
 
-        <div class="services-grid">
-            <article class="service-card">
-                <div class="service-icon">📅</div>
-                <h3>Emploi du temps</h3>
-                <p>Consulte les horaires de cours et les changements de programme.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">📚</div>
-                <h3>Documents pédagogiques</h3>
-                <p>Retrouve les supports de cours et les anciennes épreuves.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>Notes et résultats</h3>
-                <p>Un espace privé pour consulter tes résultats scolaires.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">💳</div>
-                <h3>Paiements et reçus</h3>
-                <p>Retrouve l'historique de tes cotisations et de tes paiements.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">🎉</div>
-                <h3>Événements</h3>
-                <p>Découvre les activités et les rendez-vous de la communauté.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">🔔</div>
-                <h3>Notifications</h3>
-                <p>Reste informé des annonces et des changements importants.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">💡</div>
-                <h3>Boîte à suggestions</h3>
-                <p>Propose tes idées pour améliorer la vie étudiante.</p>
-            </article>
-
-            <article class="service-card">
-                <div class="service-icon">🤝</div>
-                <h3>Vie associative</h3>
-                <p>Participe à la vie de la communauté et aux projets du BSFE.</p>
-            </article>
-        </div>
-    </section>
-
-    <section class="content-section programs" id="ecole">
-        <div class="section-heading">
-            <div class="eyebrow">Découvrir les domaines de formation</div>
-            <h2>Des filières tournées vers l'avenir</h2>
-            <p>
-                Voici les domaines présentés sur cette maquette.
-                Les intitulés définitifs seront confirmés avec les informations officielles de l'école.
-            </p>
+        <div class="card">
+            <div class="card-icon">⚙️</div>
+            <h3>Enseignements</h3>
+            <p>Explorez les connaissances et compétences développées durant les formations.</p>
         </div>
 
-        <div class="program-grid">
-            <article class="program-card">
-                <div class="program-art">❄️ 🌬️</div>
-                <div class="program-info">
-                    <h3>Froid et climatisation</h3>
-                    <p>Les technologies du froid, de la climatisation et du confort thermique.</p>
-                </div>
-            </article>
-
-            <article class="program-card">
-                <div class="program-art">⚙️ 🛠️</div>
-                <div class="program-info">
-                    <h3>Équipements motorisés</h3>
-                    <p>Les systèmes mécaniques, les équipements motorisés et leur maintenance.</p>
-                </div>
-            </article>
-
-            <article class="program-card">
-                <div class="program-art">⚡ 🔬</div>
-                <div class="program-info">
-                    <h3>Génie énergétique et procédés</h3>
-                    <p>Les systèmes énergétiques et les procédés industriels.</p>
-                </div>
-            </article>
+        <div class="card">
+            <div class="card-icon">🎓</div>
+            <h3>Parcours universitaires</h3>
+            <p>Informez-vous sur les niveaux de formation et les diplômes.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="content-section community" id="actualites">
-        <div class="community-box">
-            <div class="eyebrow">La communauté ENSGEP</div>
-            <h2>Construisons la réussite ensemble.</h2>
-            <p>
-                Le Hub Étudiant a pour ambition de rapprocher les étudiants,
-                de faciliter l'accès à l'information et de rendre les services
-                du BSFE plus accessibles.
-            </p>
-            <a class="btn btn-green" href="#inscription">Découvrir l'espace étudiant →</a>
+<!-- METIERS -->
+
+<section class="about" id="avenir">
+    <h2 class="section-title">Les métiers d'avenir</h2>
+
+    <p class="section-intro">
+        Les connaissances acquises dans les domaines de l'énergie
+        et des procédés peuvent ouvrir des perspectives dans différents
+        secteurs professionnels.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Énergie</h3>
+            <p>Découverte des activités liées à la production et à l'utilisation de l'énergie.</p>
         </div>
-    </section>
-</main>
+
+        <div class="card">
+            <h3>Industrie</h3>
+            <p>Découverte des activités liées aux équipements et aux procédés industriels.</p>
+        </div>
+
+        <div class="card">
+            <h3>Technologies</h3>
+            <p>Exploration des évolutions technologiques et de leurs applications.</p>
+        </div>
+    </div>
+</section>
+
+<!-- POURSUITE DES ETUDES -->
+
+<section id="etudes">
+    <h2 class="section-title">Poursuivre ses études</h2>
+
+    <p class="section-intro">
+        La formation universitaire peut être une étape vers
+        la spécialisation, l'approfondissement des connaissances
+        et de nouvelles perspectives académiques.
+    </p>
+</section>
+
+<!-- BSFE -->
+
+<section class="bsfe">
+    <h2 class="section-title">Le BSFE de l'ENSGEP</h2>
+
+    <p>
+        Le Bureau de la Section Fédérale des Étudiants (BSFE)
+        représente un cadre d'organisation et de représentation
+        des étudiants de l'établissement.
+    </p>
+
+    <p>
+        Découvrez ses membres, leurs responsabilités et leurs engagements.
+    </p>
+
+    <a href="bsfe.html" class="button">Découvrir notre BSFE</a>
+</section>
 
 <footer>
-    <div class="logo">
-        Le Hub <span>Étudiant</span>
-        <small>ENSGEP · BSFE</small>
-    </div>
-
-    <p>Une communauté, un avenir, des possibilités.</p>
-
-    <div>
-        <p>© 2026 Le Hub Étudiant</p>
-        <a class="footer-admin" href="#administration">Accès réservé à l'administration</a>
-    </div>
+    <p>Le Hub Étudiant — ENSGEP / UNSTIM</p>
+    <p>Abomey, Bénin</p>
 </footer>
 
-<div id="inscription" hidden></div>
-<div id="administration" hidden></div>
+<script>
+let currentSlide = 0;
+
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+
+function showSlide() {
+    slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function moveSlide(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    showSlide();
+}
+
+setInterval(() => {
+    moveSlide(1);
+}, 5000);
+</script>
 
 </body>
 </html>
-```
